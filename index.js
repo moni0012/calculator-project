@@ -26,75 +26,76 @@ const number9E = document.querySelector('.number-9');
 
 const numberEArray = [number0E, number1E, number2E, number3E, number4E, number5E, number6E, number7E, number8E, number9E];
 
-// variable decleration 
-
+// Below are global variable decleration for operators & value in memory. This will be used in handlingOperatorClick function - getResultOfOperationAsStr function and in equal 
 let valueStrInMemory = null;
 let operatorInMemory = null;
 
 //Function to display the current text content
-
 const getValueAsStr = () => {
-    const currentValueStr = valueE.textContent;
-    return currentValueStr; //** **********/
-    // return currentValueStr.split(',').join('');
+    const currentValueStr = valueE.innerHTML;
+    return currentValueStr.split(',').join('');
 }
 
 //Function returning the above string which includes commas into number
-
 const getValueAsNum = () => {
     return parseFloat(getValueAsStr())
 }
 
 //Function to set the value in the display
-
 const setStrAsValue = (valueStr) => {
-
-    if (valueStr[valueStr.length - 1] === '.') {            // to include decimal in the current display
-        valueE.textContent += '.'
+    if (valueStr[valueStr.length - 1] === '.') {    // to include decimal in the current display
+        valueE.innerHTML += '.'
         return;
     }
-
     // extract the wholenumber and decimal part from valueStr
-
     const [wholeNumStr, decimalStr] = valueStr.split('.');
     // console.log(wholeNumStr, decimalStr)  to check in devtool if the decimal number is displayed
     if (decimalStr) {
-        valueE.textContent = parseFloat(wholeNumStr).toLocaleString() + '.' + decimalStr
+        valueE.innerHTML = parseFloat(wholeNumStr).toLocaleString() + '.' + decimalStr
     } else {
-        valueE.textContent = parseFloat(wholeNumStr).toLocaleString();
+        valueE.innerHTML = parseFloat(wholeNumStr).toLocaleString();
     }
 }
 
-
 //Function once number is clicked
-
-const handleNumberClick = ((numStr) => {         // string representation of number
+const handleNumberClick = ((numStr) => {
     // console.log(numStr); this is just to check if my number clicked on the calculator is working
-    const currentValueStr = getValueAsStr();       // taking the contents of display 
+    const currentValueStr = getValueAsStr();
 
     // to remove 0 from the display contenet 
     if (currentValueStr === '0') {
         setStrAsValue(numStr)
     } else {
         setStrAsValue(currentValueStr + numStr)
-        //  valueE.textContent =            //to conver string to numbers and for commas for thousand values used toLocaleString
-        //    parseFloat(currentValueStr + numStr).toLocaleString(); 
     }
 })
 
+// function to limit the digits in display which will be called on each button clicked
+const limitDisplayLength = (numberInputStr) => {
+    let inputLength = 0;
+    maximumAllowedInput = ''
+    inputLength = numberInputStr.length;
+    if (inputLength > 10) {
+        maximumAllowedInput = 'yes';
+        return maximumAllowedInput;
+    }
+    else {
+        maximumAllowedInput = 'no';
+    }
+}
 
+// function to check for operator in memory and then perform operation accordingly, this will be called twice (handleOperatorClick & on equal opeartor)
 const getResultOfOperationAsStr = () => {
-    // checking conditions for operator in memory and then evaluating the result
     const currentValueNum = getValueAsNum();
     const valueNumInMemory = parseFloat(valueStrInMemory);
     let newValueNum;
-    if (operatorInMemory === 'addition') {
+    if (operatorInMemory === '+') {
         newValueNum = valueNumInMemory + currentValueNum;
-    } else if (operatorInMemory === 'subtraction') {
+    } else if (operatorInMemory === '-') {
         newValueNum = valueNumInMemory - currentValueNum;
-    } else if (operatorInMemory === 'multiplication') {
+    } else if (operatorInMemory === '*') {
         newValueNum = valueNumInMemory * currentValueNum;
-    } else if (operatorInMemory === 'division') {
+    } else if (operatorInMemory === '/') {
         newValueNum = valueNumInMemory / currentValueNum;
     }
     return newValueNum.toString();
@@ -114,7 +115,6 @@ const handleOperatorClick = (operation) => {
 }
 
 // Add event listener to functions
-
 acE.addEventListener('click', () => {
     setStrAsValue('0');
     valueStrInMemory = null;
@@ -145,21 +145,20 @@ percentageE.addEventListener('click', () => {
 })
 
 // Add event listener to operators
-
 additionE.addEventListener('click', () => {
-    handleOperatorClick('addition');
+    handleOperatorClick('+');
 })
 
 subtractionE.addEventListener('click', () => {
-    handleOperatorClick('subtraction');
+    handleOperatorClick('-');
 })
 
 multiplicationE.addEventListener('click', () => {
-    handleOperatorClick('multiplication');
+    handleOperatorClick('*');
 })
 
 divisionE.addEventListener('click', () => {
-    handleOperatorClick('division');
+    handleOperatorClick('/');
 })
 
 equalE.addEventListener('click', () => {
@@ -169,21 +168,22 @@ equalE.addEventListener('click', () => {
         operatorInMemory = null;
     }
 })
-// Adding Event Listener to numbers and decimal buttons
 
+// Adding Event Listener to numbers and decimal buttons
 for (let i = 0; i < numberEArray.length; i++) {
     const numberE = numberEArray[i];
     // console.log(numberE)
     numberE.addEventListener('click', () => {
         // call function when a number is clicked
-        handleNumberClick(i.toString());      // to make the integer index clicked to string
+        handleNumberClick(i.toString());
     })
 }
+
 decimalE.addEventListener('click', () => {
     const currentValueStr = getValueAsStr();
     //   valueE.textContent = currentValueStr + '.';  this is to include dot but it's taking more than one dot
     if (!currentValueStr.includes('.')) {
         setStrAsValue(currentValueStr + '.')
-        //  valueE.textContent = currentValueStr + '.'  this is for the current display with dot
+        //  valueE.textContent = currentValueStr + '.'  this is for the current display with single dot
     }
 })

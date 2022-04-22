@@ -4,15 +4,6 @@
   padding: 20px;
 }
 
-.button-conatiner {
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 20px;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
-}
-
 .button {
   height: 20px;
   width: 20px;
@@ -55,14 +46,26 @@
   height: 600px;
   padding-top: 20px;
   color: white;
+  position: relative;
+  border-radius: 2%;
+  margin-left: 35%;
 }
 
 .value {
-  font-size: 50px;
+  font-size: 30px;
   font-style: normal;
   margin-bottom: 20px;
   margin-right: 20px;
   text-align: right;
+}
+
+.button-conatiner {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }
 
 .bottom {
@@ -73,4 +76,6 @@
   width: 7rem;
   height: 3px;
   margin-top: 75px;
+  background-color: darkorange;
+  position: absolute;
 }/*# sourceMappingURL=main.css.map */

@@ -1,12 +1,6 @@
 @use "_base.scss"as *;
 
-.button-conatiner {
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    row-gap: 20px;
-    column-gap: 10px;
-}
+
 
 .button {
     height: 20px;
