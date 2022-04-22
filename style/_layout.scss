@@ -6,8 +6,6 @@
     height: 600px;
     padding-top: 20px;
     color: $color-white;
-    position: relative;
-
 }
 
 .value {
@@ -21,7 +19,6 @@
 .bottom {
     text-decoration: underline;
     background-color: $color-white;
-    position: absolute;
     left: 30%;
     padding: 0px;
     width: 7rem;

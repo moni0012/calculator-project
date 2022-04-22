@@ -84,11 +84,33 @@ const handleNumberClick = ((numStr) => {         // string representation of num
 
 
 const getResultOfOperationAsStr = () => {
-
+    // checking conditions for operator in memory and then evaluating the result
+    const currentValueNum = getValueAsNum();
+    const valueNumInMemory = parseFloat(valueStrInMemory);
+    let newValueNum;
+    if (operatorInMemory === 'addition') {
+        newValueNum = valueNumInMemory + currentValueNum;
+    } else if (operatorInMemory === 'subtraction') {
+        newValueNum = valueNumInMemory - currentValueNum;
+    } else if (operatorInMemory === 'multiplication') {
+        newValueNum = valueNumInMemory * currentValueNum;
+    } else if (operatorInMemory === 'division') {
+        newValueNum = valueNumInMemory / currentValueNum;
+    }
+    return newValueNum.toString();
 }
 
 const handleOperatorClick = (operation) => {
-
+    const currentValueStr = getValueAsStr();
+    if (!valueStrInMemory) {
+        valueStrInMemory = currentValueStr;
+        operatorInMemory = operation;
+        setStrAsValue('0');
+        return;
+    }
+    valueStrInMemory = getResultOfOperationAsStr();
+    operatorInMemory = operation;
+    setStrAsValue('0');
 }
 
 // Add event listener to functions
