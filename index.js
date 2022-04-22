@@ -31,15 +31,10 @@ let valueStrInMemory = null;
 let operatorInMemory = null;
 
 //Function to display the current text content
-const getValueAsStr = () => {
-    const currentValueStr = valueE.innerHTML;
-    return currentValueStr.split(',').join('');
-}
+const getValueAsStr = () => valueE.innerHTML.split(',').join('');
 
 //Function returning the above string which includes commas into number
-const getValueAsNum = () => {
-    return parseFloat(getValueAsStr())
-}
+const getValueAsNum = () => parseFloat(getValueAsStr());
 
 //Function to set the value in the display
 const setStrAsValue = (valueStr) => {
