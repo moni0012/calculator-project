@@ -1,0 +1,30 @@
+@use "_base.scss"as *;
+
+.calculator {
+    background-color: $color-black;
+    width: 300px;
+    height: 600px;
+    padding-top: 20px;
+    color: $color-white;
+    position: relative;
+
+}
+
+.value {
+    font-size: 50px;
+    font-style: normal;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.bottom {
+    text-decoration: underline;
+    background-color: $color-white;
+    position: absolute;
+    left: 30%;
+    padding: 0px;
+    width: 7rem;
+    height: 3px;
+    margin-top: 75px;
+}

@@ -1,0 +1,46 @@
+@use "_base.scss"as *;
+
+.button-conatiner {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+}
+
+.button {
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: $color-button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: filter .5s;
+}
+
+.button.function {
+    color: $color-black;
+    background-color: $color-function;
+}
+
+.button.operator {
+    background-color: $color-operation;
+
+}
+
+.button.number-0 {
+    border-radius: 25px;
+    justify-content: flex-start;
+    padding-left: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 90px;
+}
+
+.button:active,
+.button:focus {
+    filter: brightness(150%)
+}

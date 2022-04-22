@@ -122,7 +122,7 @@ percentageE.addEventListener('click', () => {
     operatorInMemory = null;
 })
 
-// Add event listenefr to operators
+// Add event listener to operators
 
 additionE.addEventListener('click', () => {
     handleOperatorClick('addition');
