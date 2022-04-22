@@ -3,7 +3,7 @@
 .calculator {
     background-color: $color-black;
     width: 300px;
-    height: 600px;
+    height: 550px;
     padding-top: 20px;
     color: $color-white;
     position: relative;
@@ -13,6 +13,7 @@
 
 .value {
     font-size: 30px;
+    height: 50px;
     font-style: normal;
     margin-bottom: 20px;
     margin-right: 20px;
@@ -21,6 +22,7 @@
 
 .button-conatiner {
     display: grid;
+    height: 400px;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
     row-gap: 20px;
@@ -34,7 +36,7 @@
     padding: 0px;
     width: 7rem;
     height: 3px;
-    margin-top: 75px;
+    margin-top: 10px;
     background-color: $color-operation;
     position: absolute;
 }
